@@ -23,3 +23,14 @@ def rearrange_products_table(products: pd.DataFrame) -> pd.DataFrame:
     melted = melted.reset_index(drop=True)
 
     return melted
+
+if __name__ == "__main__":
+    products_df = pd.DataFrame({
+        'product_id': [101, 102, 103],
+        'store1': [10.0, None, 15.0],
+        'store2': [12.0, 13.0, None],
+        'store3': [None, 14.0, 16.0]
+    })
+
+    print(rearrange_products_table(products_df))
+

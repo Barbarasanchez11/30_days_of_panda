@@ -15,7 +15,7 @@ patients['conditions'] = patients['conditions'].fillna('').astype(str)
 # Función para encontrar pacientes con Type I Diabetes (DIAB1)
 def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
     # Condición: "DIAB1" debe aparecer en alguna parte de las condiciones
-    condition = patients['conditions'].str.contains('DIAB1', case=False)
+    condition = patients['conditions'].str.contains(r'(?<!\+)\bDIAB1\d+\b', case=False, na=False)
     
     # Filtrar pacientes que cumplen la condición
     diabetes_patients = patients[condition]
